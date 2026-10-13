@@ -1,0 +1,89 @@
+/* Result Management - design tokens */
+:root{
+  --ink:#14213d; --ink-2:#1d2e52; --accent:#0f766e; --accent-d:#0b5e58; --accent-soft:#e0f2f0;
+  --bg:#f4f5f7; --card:#fff; --line:#e3e6ec; --text:#1b2433; --mute:#667085;
+  --ok:#17653a; --ok-bg:#e1f3e8; --bad:#b42318; --bad-bg:#fde8e6; --wait:#8a5a00; --wait-bg:#fff1cf;
+  --radius:12px; --sidebar:260px;
+  --bs-body-font-family:"Inter","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+}
+html{font-size:15px}
+body{background:var(--bg);color:var(--text);font-family:var(--bs-body-font-family);-webkit-font-smoothing:antialiased}
+
+/* Sidebar (the !important beats Bootstrap's transparent offcanvas-lg background) */
+.sidebar{--bs-offcanvas-width:var(--sidebar);background:var(--ink)!important;color:#fff;border:0!important}
+.sidebar .brand{display:flex;align-items:center;gap:.7rem;padding:1.25rem 1.25rem 1rem;font-weight:600;letter-spacing:.2px}
+.sidebar .brand .mark{width:34px;height:34px;border-radius:9px;background:var(--accent);display:grid;place-items:center;font-size:1.05rem}
+.sidebar .brand small{display:block;color:#9fb0cf;font-weight:400;font-size:.75rem}
+.sidebar .group{color:#7d8fb3;font-size:.75rem;padding:1rem 1.35rem .4rem}
+.sidebar .nav{padding:0 .75rem}
+.sidebar .nav-link{display:flex;align-items:center;gap:.7rem;color:#c3cfe6;border-radius:9px;padding:.6rem .85rem;margin:2px 0;position:relative;transition:background .15s,color .15s}
+.sidebar .nav-link i{font-size:1.05rem;opacity:.9}
+.sidebar .nav-link:hover{background:var(--ink-2);color:#fff}
+.sidebar .nav-link.active{background:var(--ink-2);color:#fff;font-weight:600}
+.sidebar .nav-link.active::before{content:"";position:absolute;left:-.75rem;top:20%;bottom:20%;width:4px;border-radius:0 4px 4px 0;background:#3ec1b5}
+.sidebar .foot{margin-top:auto;padding:1rem 1.35rem;color:#7d8fb3;font-size:.75rem}
+@media(min-width:992px){
+  .sidebar{position:fixed;inset:0 auto 0 0;width:var(--sidebar);display:flex!important;flex-direction:column}
+  .content{margin-left:var(--sidebar)}
+}
+
+/* Top bar and page header */
+.topbar{background:var(--card);border-bottom:1px solid var(--line);padding:.7rem 1.25rem;color:var(--mute);font-size:.9rem;position:sticky;top:0;z-index:10}
+main{max-width:1180px;margin:0 auto}
+.page-head{margin-bottom:1.4rem}
+.page-head h1{font-family:"Source Serif 4",Georgia,serif;font-size:1.7rem;font-weight:600;letter-spacing:-.2px;margin:0}
+.page-head p{color:var(--mute);margin:.25rem 0 0}
+
+/* Cards, tables */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 1px 2px rgba(20,33,61,.04)}
+.card-header{border-bottom:1px solid var(--line);padding:.85rem 1.1rem;font-weight:600;border-radius:var(--radius) var(--radius) 0 0}
+.table{--bs-table-bg:transparent;margin-bottom:0;font-size:.93rem}
+.table>:not(caption)>*>*{padding:.75rem 1.1rem;border-bottom-color:var(--line)}
+.table thead th{background:#fafbfc;color:var(--mute);font-weight:600;font-size:.78rem;letter-spacing:.3px;border-bottom:1px solid var(--line);white-space:nowrap}
+.table tbody tr:hover{background:#f8fafb}
+.table tbody tr:last-child td{border-bottom:0}
+.table td.num,.text-end{font-variant-numeric:tabular-nums}
+
+/* Stat cards */
+.stat .card-body{padding:1.1rem 1.2rem}
+.stat .bi{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#e8ecf7;color:#33437a;font-size:1.1rem;margin-bottom:.8rem}
+.row>div:nth-child(4) .stat .bi{background:var(--accent-soft);color:var(--accent)}
+.row>div:nth-child(5) .stat .bi{background:var(--ok-bg);color:var(--ok)}
+.row>div:nth-child(6) .stat .bi{background:var(--bad-bg);color:var(--bad)}
+.row>div:nth-child(7) .stat .bi{background:var(--wait-bg);color:var(--wait)}
+.stat .num{font-size:1.85rem;font-weight:650;line-height:1;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.stat .lbl{color:var(--mute);font-size:.85rem;margin-top:.35rem}
+
+/* Forms and buttons */
+.form-label{font-size:.85rem;font-weight:600;color:#344054;margin-bottom:.35rem}
+.form-control,.form-select{border:1px solid #cfd5de;border-radius:9px;padding:.55rem .75rem}
+.form-control:focus,.form-select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(15,118,110,.18)}
+.btn{border-radius:9px;font-weight:500;padding:.5rem 1rem}
+.btn-sm{padding:.3rem .7rem;border-radius:8px}
+.btn-primary{--bs-btn-bg:var(--accent);--bs-btn-border-color:var(--accent);--bs-btn-hover-bg:var(--accent-d);--bs-btn-hover-border-color:var(--accent-d);--bs-btn-active-bg:var(--accent-d);--bs-btn-active-border-color:var(--accent-d)}
+.btn-outline-secondary{--bs-btn-color:#344054;--bs-btn-border-color:#cfd5de;--bs-btn-hover-bg:#f2f4f7;--bs-btn-hover-color:var(--text);--bs-btn-hover-border-color:#b8c0cc}
+.btn-outline-danger{--bs-btn-color:var(--bad);--bs-btn-border-color:#f2c6c1;--bs-btn-hover-bg:var(--bad-bg);--bs-btn-hover-color:var(--bad);--bs-btn-hover-border-color:#e9a8a1}
+
+/* Soft status badges */
+.badge{font-weight:600;font-size:.76rem;padding:.38em .75em;border-radius:99px}
+.badge.text-bg-success{background:var(--ok-bg)!important;color:var(--ok)!important}
+.badge.text-bg-danger{background:var(--bad-bg)!important;color:var(--bad)!important}
+.badge.text-bg-warning{background:var(--wait-bg)!important;color:var(--wait)!important}
+.alert{border:0;border-radius:10px}
+.alert-success{background:var(--ok-bg);color:var(--ok)}.alert-danger{background:var(--bad-bg);color:var(--bad)}
+
+/* Empty states */
+.empty{text-align:center;padding:2.75rem 1rem;color:var(--mute)}
+.empty .bi{display:inline-grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#eef1f5;color:#8793a8;font-size:1.5rem;margin-bottom:.6rem}
+
+/* Marksheet */
+.sheet{max-width:840px;margin:auto}
+.sheet-head{border-bottom:3px double var(--ink);padding-bottom:1rem;margin-bottom:1.25rem;text-align:center}
+.sheet-head h2{font-family:"Source Serif 4",Georgia,serif;font-weight:600;color:var(--ink)}
+.sheet .table-bordered>:not(caption)>*>*{border-color:var(--line)}
+
+@media print{
+  .sidebar,.topbar,.no-print,.alert{display:none!important}
+  .content{margin:0!important}body{background:#fff}
+  .card{border:1px solid #999;box-shadow:none}
+}
